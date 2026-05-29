@@ -1,0 +1,57 @@
+{
+  "version": "2.0",
+  "name": "ISP-Backbone-OSPF",
+  "project_id": "ospf-demo-001",
+  "topology": {
+    "nodes": [
+      { "node_id": "core1", "name": "CORE-1", "node_type": "dynamips", "x": 500, "y": 280 },
+      { "node_id": "core2", "name": "CORE-2", "node_type": "dynamips", "x": 700, "y": 280 },
+      { "node_id": "core3", "name": "CORE-3", "node_type": "dynamips", "x": 600, "y": 160 },
+
+      { "node_id": "dist1", "name": "DIST-1", "node_type": "dynamips", "x": 280, "y": 160 },
+      { "node_id": "dist2", "name": "DIST-2", "node_type": "dynamips", "x": 280, "y": 380 },
+      { "node_id": "dist3", "name": "DIST-3", "node_type": "dynamips", "x": 920, "y": 160 },
+      { "node_id": "dist4", "name": "DIST-4", "node_type": "dynamips", "x": 920, "y": 380 },
+
+      { "node_id": "edge1", "name": "EDGE-1",  "node_type": "dynamips", "x": 100, "y": 80  },
+      { "node_id": "edge2", "name": "EDGE-2",  "node_type": "dynamips", "x": 100, "y": 260 },
+      { "node_id": "edge3", "name": "EDGE-3",  "node_type": "dynamips", "x": 100, "y": 440 },
+      { "node_id": "edge4", "name": "EDGE-4",  "node_type": "dynamips", "x": 280, "y": 520 },
+      { "node_id": "edge5", "name": "EDGE-5",  "node_type": "dynamips", "x": 1100, "y": 80  },
+      { "node_id": "edge6", "name": "EDGE-6",  "node_type": "dynamips", "x": 1100, "y": 260 },
+      { "node_id": "edge7", "name": "EDGE-7",  "node_type": "dynamips", "x": 1100, "y": 440 },
+      { "node_id": "edge8", "name": "EDGE-8",  "node_type": "dynamips", "x": 920, "y": 520 }
+    ],
+    "links": [
+      { "link_id": "l01", "nodes": [{ "node_id": "core1" }, { "node_id": "core2" }] },
+      { "link_id": "l02", "nodes": [{ "node_id": "core1" }, { "node_id": "core3" }] },
+      { "link_id": "l03", "nodes": [{ "node_id": "core2" }, { "node_id": "core3" }] },
+
+      { "link_id": "l04", "nodes": [{ "node_id": "core1" }, { "node_id": "dist1" }] },
+      { "link_id": "l05", "nodes": [{ "node_id": "core1" }, { "node_id": "dist2" }] },
+      { "link_id": "l06", "nodes": [{ "node_id": "core2" }, { "node_id": "dist3" }] },
+      { "link_id": "l07", "nodes": [{ "node_id": "core2" }, { "node_id": "dist4" }] },
+      { "link_id": "l08", "nodes": [{ "node_id": "core3" }, { "node_id": "dist1" }] },
+      { "link_id": "l09", "nodes": [{ "node_id": "core3" }, { "node_id": "dist3" }] },
+
+      { "link_id": "l10", "nodes": [{ "node_id": "dist1" }, { "node_id": "dist2" }] },
+      { "link_id": "l11", "nodes": [{ "node_id": "dist3" }, { "node_id": "dist4" }] },
+
+      { "link_id": "l12", "nodes": [{ "node_id": "dist1" }, { "node_id": "edge1" }] },
+      { "link_id": "l13", "nodes": [{ "node_id": "dist1" }, { "node_id": "edge2" }] },
+      { "link_id": "l14", "nodes": [{ "node_id": "dist2" }, { "node_id": "edge2" }] },
+      { "link_id": "l15", "nodes": [{ "node_id": "dist2" }, { "node_id": "edge3" }] },
+      { "link_id": "l16", "nodes": [{ "node_id": "dist2" }, { "node_id": "edge4" }] },
+
+      { "link_id": "l17", "nodes": [{ "node_id": "dist3" }, { "node_id": "edge5" }] },
+      { "link_id": "l18", "nodes": [{ "node_id": "dist3" }, { "node_id": "edge6" }] },
+      { "link_id": "l19", "nodes": [{ "node_id": "dist4" }, { "node_id": "edge6" }] },
+      { "link_id": "l20", "nodes": [{ "node_id": "dist4" }, { "node_id": "edge7" }] },
+      { "link_id": "l21", "nodes": [{ "node_id": "dist4" }, { "node_id": "edge8" }] },
+
+      { "link_id": "l22", "nodes": [{ "node_id": "edge3" }, { "node_id": "edge4" }] },
+      { "link_id": "l23", "nodes": [{ "node_id": "edge7" }, { "node_id": "edge8" }] },
+      { "link_id": "l24", "nodes": [{ "node_id": "edge1" }, { "node_id": "edge2" }] }
+    ]
+  }
+}

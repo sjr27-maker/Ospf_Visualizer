@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect, useMemo } from 'react'
 import TopologyCanvas from './components/TopologyCanvas'
 import OSPFPanel from './components/OSPFPanel'
 import PacketAnimator from './components/PacketAnimator'
@@ -18,10 +18,31 @@ export default function App() {
   const [floodEdges, setFloodEdges] = useState([])
   const [log, setLog] = useState([])
   const [phase, setPhase] = useState('idle') // idle | flooding | routing | sending
-  const canvasRef = useRef(null)
+  const canvasRef = useRef(null) 
+  const [isFullscreen, setIsFullscreen] = useState(false)
 
-  const nodeMap = {}
-  nodes.forEach(n => { nodeMap[n.id] = n })
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen()
+      setIsFullscreen(true)
+    } else {
+      document.exitFullscreen()
+      setIsFullscreen(false)
+    }
+  }
+
+  // Sync state if user presses Escape to exit fullscreen
+  useEffect(() => {
+    const handler = () => setIsFullscreen(!!document.fullscreenElement)
+    document.addEventListener('fullscreenchange', handler)
+    return () => document.removeEventListener('fullscreenchange', handler)
+  }, [])
+
+  const nodeMap = useMemo(() => {
+    const map = {}
+    nodes.forEach(n => { map[n.id] = n })
+    return map
+  }, [nodes])
 
   const addLog = (msg, type = 'INFO') => {
     const time = new Date().toTimeString().slice(0, 8)
@@ -178,6 +199,9 @@ export default function App() {
           </button>
         </div>
       </div>
+       <button onClick={toggleFullscreen} style={btnStyle}>
+  {isFullscreen ? '⊠ EXIT FULL' : '⊡ FULLSCREEN'}
+</button>
 
       {/* ── Canvas ── */}
       <div ref={canvasRef} style={{ position: 'relative', overflow: 'hidden', background: '#030810' }}>
