@@ -1,0 +1,24 @@
+{
+  "version": "2.0",
+  "name": "OSPF-Sample",
+  "topology": {
+    "nodes": [
+      { "node_id": "r1", "name": "R1-Core", "node_type": "dynamips", "x": 400, "y": 250 },
+      { "node_id": "r2", "name": "R2-Dist", "node_type": "dynamips", "x": 200, "y": 100 },
+      { "node_id": "r3", "name": "R3-Dist", "node_type": "dynamips", "x": 600, "y": 100 },
+      { "node_id": "r4", "name": "R4-Edge", "node_type": "dynamips", "x": 100, "y": 350 },
+      { "node_id": "r5", "name": "R5-Edge", "node_type": "dynamips", "x": 400, "y": 450 },
+      { "node_id": "r6", "name": "R6-Edge", "node_type": "dynamips", "x": 700, "y": 350 }
+    ],
+    "links": [
+      { "link_id": "l1", "nodes": [{ "node_id": "r1" }, { "node_id": "r2" }] },
+      { "link_id": "l2", "nodes": [{ "node_id": "r1" }, { "node_id": "r3" }] },
+      { "link_id": "l3", "nodes": [{ "node_id": "r2" }, { "node_id": "r4" }] },
+      { "link_id": "l4", "nodes": [{ "node_id": "r2" }, { "node_id": "r5" }] },
+      { "link_id": "l5", "nodes": [{ "node_id": "r3" }, { "node_id": "r5" }] },
+      { "link_id": "l6", "nodes": [{ "node_id": "r3" }, { "node_id": "r6" }] },
+      { "link_id": "l7", "nodes": [{ "node_id": "r4" }, { "node_id": "r5" }] },
+      { "link_id": "l8", "nodes": [{ "node_id": "r5" }, { "node_id": "r6" }] }
+    ]
+  }
+}
